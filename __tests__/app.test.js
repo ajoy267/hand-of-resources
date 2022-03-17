@@ -11,4 +11,14 @@ describe('hand-of-resources routes', () => {
   afterAll(() => {
     pool.end();
   });
+
+  it('creates a bike', async () => {
+    const expected = {
+      brand: 'Specialized',
+      model: 'S-Works Tarmac SL7',
+      components: 'Shimano Di2',
+    };
+    const res = await request(app).post('/api/v1/bikes').send(expected);
+    expect(res.body).toEqual({ id: expect.any(String), ...expected });
+  });
 });
