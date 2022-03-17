@@ -47,4 +47,10 @@ describe('hand-of-resources routes', () => {
       .send({ model: 'Tarmac SL7' });
     expect(res.body).toEqual(expected);
   });
+
+  it('deletes a bike from the table', async () => {
+    const expected = await Bike.getById(1);
+    const res = await request(app).delete(`/api/v1/bikes/${expected.id}`);
+    expect(res.body).toEqual(expected);
+  });
 });
