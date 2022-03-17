@@ -34,4 +34,17 @@ describe('bikes routes', () => {
     const res = await request(app).get(`/api/v1/cars/${expected.id}`);
     expect(res.body).toEqual({ ...expected });
   });
+
+  it('updates car based off id', async () => {
+    const expected = {
+      id: expect.any(String),
+      brand: 'Jeep',
+      make: 'Compass',
+      model: 'TrailHawk',
+    };
+    const res = await request(app)
+      .patch('/api/v1/cars/1')
+      .send({ model: 'TrailHawk' });
+    expect(res.body).toEqual(expected);
+  });
 });
