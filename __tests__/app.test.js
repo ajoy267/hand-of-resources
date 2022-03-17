@@ -34,4 +34,17 @@ describe('hand-of-resources routes', () => {
     const res = await request(app).get(`/api/v1/bikes/${expected.id}`);
     expect(res.body).toEqual({ ...expected });
   });
+
+  it('updated a bike based off its id', async () => {
+    const expected = {
+      id: expect.any(String),
+      brand: 'Specialized',
+      model: 'Tarmac SL7',
+      components: 'Shimano Di2',
+    };
+    const res = await request(app)
+      .patch('/api/v1/bikes/1')
+      .send({ model: 'Tarmac SL7' });
+    expect(res.body).toEqual(expected);
+  });
 });
