@@ -28,4 +28,10 @@ describe('bikes routes', () => {
     const res = await request(app).get('/api/v1/cars');
     expect(res.body).toEqual(expected);
   });
+
+  it('gets a car by its id', async () => {
+    const expected = await Car.getById(1);
+    const res = await request(app).get(`/api/v1/cars/${expected.id}`);
+    expect(res.body).toEqual({ ...expected });
+  });
 });
