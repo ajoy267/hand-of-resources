@@ -14,3 +14,19 @@ INSERT INTO
 VALUES 
     ('Specialized', 'S-Works Tarmac SL7', 'Shimano Di2'),
     ('Giant', 'Trinity', 'Sram Etap');
+
+
+DROP TABLE IF EXISTS cars;
+
+CREATE TABLE cars (
+    id BIGINT GENERATED ALWAYS AS IDENTITY,
+    brand TEXT NOT NULL,
+    make TEXT NOT NULL,
+    model TEXT NOT NULL
+);
+
+INSERT INTO
+    cars (brand, make, model)
+VALUES
+    ('Jeep', 'Compass', '80th Anniversary Edition'),
+    ('Dodge', 'Charger', 'SRT');
