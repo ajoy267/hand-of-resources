@@ -30,3 +30,18 @@ INSERT INTO
 VALUES
     ('Jeep', 'Compass', '80th Anniversary Edition'),
     ('Dodge', 'Charger', 'SRT');
+
+
+DROP TABLE IF EXISTS snow;
+
+CREATE TABLE snow (
+    id BIGINT GENERATED ALWAYS AS IDENTITY,
+    sport TEXT NOT NULL,
+    experience TEXT NOT NULL
+);
+
+INSERT INTO
+    snow (sport, experience)
+VALUES
+    ('Ski', 'Intermediate'),
+    ('Snowboard', 'Beginner');
