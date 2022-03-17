@@ -47,4 +47,10 @@ describe('bikes routes', () => {
       .send({ model: 'TrailHawk' });
     expect(res.body).toEqual(expected);
   });
+
+  it('it deletes a car from the table', async () => {
+    const expected = await Car.getById(1);
+    const res = await request(app).delete(`/api/v1/cars/${expected.id}`);
+    expect(res.body).toEqual(expected);
+  });
 });
