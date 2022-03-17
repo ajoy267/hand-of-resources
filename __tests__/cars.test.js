@@ -37,7 +37,6 @@ describe('car routes', () => {
 
   it('updates car based off id', async () => {
     const expected = {
-      id: expect.any(String),
       brand: 'Jeep',
       make: 'Compass',
       model: 'TrailHawk',
@@ -45,7 +44,7 @@ describe('car routes', () => {
     const res = await request(app)
       .patch('/api/v1/cars/1')
       .send({ model: 'TrailHawk' });
-    expect(res.body).toEqual(expected);
+    expect(res.body).toEqual({ id: expect.any(String), ...expected });
   });
 
   it('it deletes a car from the table', async () => {

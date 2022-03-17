@@ -37,7 +37,6 @@ describe('bikes routes', () => {
 
   it('updated a bike based off its id', async () => {
     const expected = {
-      id: expect.any(String),
       brand: 'Specialized',
       model: 'Tarmac SL7',
       components: 'Shimano Di2',
@@ -45,7 +44,7 @@ describe('bikes routes', () => {
     const res = await request(app)
       .patch('/api/v1/bikes/1')
       .send({ model: 'Tarmac SL7' });
-    expect(res.body).toEqual(expected);
+    expect(res.body).toEqual({ id: expect.any(String), ...expected });
   });
 
   it('deletes a bike from the table', async () => {
