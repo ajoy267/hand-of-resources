@@ -2,6 +2,7 @@ const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
+const Snow = require('../lib/models/Snow');
 
 describe('snow routes', () => {
   beforeEach(() => {
@@ -19,5 +20,11 @@ describe('snow routes', () => {
     };
     const res = await request(app).post('/api/v1/snow').send(expected);
     expect(res.body).toEqual({ id: expect.any(String), ...expected });
+  });
+
+  it('gets all snow sports', async () => {
+    const expected = await Snow.getAll();
+    const res = await request(app).get('/api/v1/snow');
+    expect(res.body).toEqual(expected);
   });
 });
