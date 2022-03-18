@@ -45,3 +45,18 @@ INSERT INTO
 VALUES
     ('Ski', 'Intermediate'),
     ('Snowboard', 'Beginner');
+
+
+DROP TABLE IF EXISTS games;
+
+CREATE TABLE games (
+    id BIGINT GENERATED ALWAYS AS IDENTITY,
+    type TEXT NOT NULL,
+    name TEXT NOT NULL
+);
+
+INSERT INTO
+    games (type, name)
+VALUES
+    ('Video', 'Call of Duty'),
+    ('Board', 'Codenames');
