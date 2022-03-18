@@ -44,4 +44,10 @@ describe('car routes', () => {
       .send({ name: 'Running' });
     expect(res.body).toEqual({ id: expect.any(String), ...expected });
   });
+
+  it('deletes a sport from the table', async () => {
+    const expected = await Sport.getById(1);
+    const res = await request(app).delete(`/api/v1/sports/${expected.id}`);
+    expect(res.body).toEqual(expected);
+  });
 });
