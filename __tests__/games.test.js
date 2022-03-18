@@ -27,4 +27,10 @@ describe('car routes', () => {
     const res = await request(app).get('/api/v1/games');
     expect(res.body).toEqual(expected);
   });
+
+  it('gets a game by its id', async () => {
+    const expected = await Game.getById(1);
+    const res = await request(app).get(`/api/v1/games/${expected.id}`);
+    expect(res.body).toEqual({ ...expected });
+  });
 });
