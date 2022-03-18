@@ -33,4 +33,15 @@ describe('snow routes', () => {
     const res = await request(app).get(`/api/v1/snow/${expected.id}`);
     expect(res.body).toEqual(expected);
   });
+
+  it('updates a snow sport based off its id', async () => {
+    const expected = {
+      sport: 'Ski',
+      experience: 'Beginner',
+    };
+    const res = await request(app)
+      .patch('/api/v1/snow/1')
+      .send({ experience: 'Beginner' });
+    expect(res.body).toEqual({ id: expect.any(String), ...expected });
+  });
 });
