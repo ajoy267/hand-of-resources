@@ -2,6 +2,7 @@ const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
+const Sport = require('../lib/models/Sport');
 
 describe('car routes', () => {
   beforeEach(() => {
@@ -19,5 +20,11 @@ describe('car routes', () => {
     };
     const res = await request(app).post('/api/v1/sports').send(expected);
     expect(res.body).toEqual({ id: expect.any(String), ...expected });
+  });
+
+  it('gets all sports', async () => {
+    const expected = await Sport.getAll();
+    const res = await request(app).get('/api/v1/sports');
+    expect(res.body).toEqual(expected);
   });
 });
