@@ -33,4 +33,15 @@ describe('car routes', () => {
     const res = await request(app).get(`/api/v1/sports/${expected.id}`);
     expect(res.body).toEqual({ id: expect.any(String), ...expected });
   });
+
+  it('updates a sport based off its id', async () => {
+    const expected = {
+      name: 'Running',
+      team: 'Yes',
+    };
+    const res = await request(app)
+      .patch('/api/v1/sports/1')
+      .send({ name: 'Running' });
+    expect(res.body).toEqual({ id: expect.any(String), ...expected });
+  });
 });
