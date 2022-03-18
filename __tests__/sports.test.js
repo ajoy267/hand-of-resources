@@ -27,4 +27,10 @@ describe('car routes', () => {
     const res = await request(app).get('/api/v1/sports');
     expect(res.body).toEqual(expected);
   });
+
+  it('gets a sport by its id', async () => {
+    const expected = await Sport.getById(1);
+    const res = await request(app).get(`/api/v1/sports/${expected.id}`);
+    expect(res.body).toEqual({ id: expect.any(String), ...expected });
+  });
 });
