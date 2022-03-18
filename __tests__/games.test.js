@@ -44,4 +44,10 @@ describe('car routes', () => {
       .send({ name: 'Monopoly' });
     expect(res.body).toEqual({ id: expect.any(String), ...expected });
   });
+
+  it('deletes a game from the table', async () => {
+    const expected = await Game.getById(2);
+    const res = await request(app).delete(`/api/v1/games/${expected.id}`);
+    expect(res.body).toEqual(expected);
+  });
 });
