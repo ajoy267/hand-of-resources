@@ -58,5 +58,5 @@ CREATE TABLE games (
 INSERT INTO
     games (type, name)
 VALUES
-    ('Video', 'Call of Duty'),
-    ('Board', 'Codenames');
+    ('Board', 'Codenames'),
+    ('Video', 'Call of Duty');

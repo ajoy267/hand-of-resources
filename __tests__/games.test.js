@@ -33,4 +33,15 @@ describe('car routes', () => {
     const res = await request(app).get(`/api/v1/games/${expected.id}`);
     expect(res.body).toEqual({ ...expected });
   });
+
+  it('updates a game based off its id', async () => {
+    const expected = {
+      type: 'Board',
+      name: 'Monopoly',
+    };
+    const res = await request(app)
+      .patch('/api/v1/games/1')
+      .send({ name: 'Monopoly' });
+    expect(res.body).toEqual({ id: expect.any(String), ...expected });
+  });
 });
