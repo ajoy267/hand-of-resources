@@ -27,4 +27,10 @@ describe('snow routes', () => {
     const res = await request(app).get('/api/v1/snow');
     expect(res.body).toEqual(expected);
   });
+
+  it('gets a snow sport by id', async () => {
+    const expected = await Snow.getById(1);
+    const res = await request(app).get(`/api/v1/snow/${expected.id}`);
+    expect(res.body).toEqual(expected);
+  });
 });
