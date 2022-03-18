@@ -44,4 +44,10 @@ describe('snow routes', () => {
       .send({ experience: 'Beginner' });
     expect(res.body).toEqual({ id: expect.any(String), ...expected });
   });
+
+  it('deletes a snow sport based off its id', async () => {
+    const expected = await Snow.getById(1);
+    const res = await request(app).delete(`/api/v1/snow/${expected.id}`);
+    expect(res.body).toEqual(expected);
+  });
 });
