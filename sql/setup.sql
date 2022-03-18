@@ -60,3 +60,18 @@ INSERT INTO
 VALUES
     ('Board', 'Codenames'),
     ('Video', 'Call of Duty');
+
+
+DROP TABLE IF EXISTS sports;
+
+CREATE TABLE sports (
+    id BIGINT GENERATED ALWAYS AS IDENTITY,
+    name TEXT NOT NULL,
+    team TEXT NOT NULL
+);
+
+INSERT INTO
+    sports (name, team)
+VALUES
+    ('Cycling', 'Yes'),
+    ('Swimming', 'No');
